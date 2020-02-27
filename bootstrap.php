@@ -17,6 +17,7 @@ $channel->queue_bind('hello-dlq', 'dlq-exchange');
 // queue
 $channel->queue_declare('hello', false, true, false, false, false, new AMQPTable([
     'x-dead-letter-exchange' => 'dlq-exchange',
+    'x-dead-letter-routing-key' => 'hello-dlq',
 ]));
 
 return $channel;
