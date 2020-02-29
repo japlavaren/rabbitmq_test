@@ -12,7 +12,7 @@ $channel->basic_qos(null, 1, null);
 // DLQ with exchange
 $channel->queue_declare('hello-dlq', false, true, false, false);
 $channel->exchange_declare('dlq-exchange', 'direct', false, false, false);
-$channel->queue_bind('hello-dlq', 'dlq-exchange');
+$channel->queue_bind('hello-dlq', 'dlq-exchange', 'hello-dlq');
 
 // queue
 $channel->queue_declare('hello', false, true, false, false, false, new AMQPTable([
